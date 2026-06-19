@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: image-2
+
+  app2:
+    image: image-2
+    container_name: container-a
+    ports:
+      - "4000:5000"
+    volumes:
+      - volume-a:/data
+    networks:
+      - network-a
+
+  app3:
+   image: image-2
+   container_name: container-b
+   ports:
+     - "4001:5000"
+   volumes:
+     - volume-a:/data
+   networks:
+     - network-a
+
+volumes:
+  volume-a:
+networks:
+  network-a:
